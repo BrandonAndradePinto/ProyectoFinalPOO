@@ -24,17 +24,26 @@ public class Login {
             FileReader fr = new FileReader("RegistrosAdmin.csv");
             br = new BufferedReader(fr);
             String datos = br.readLine();
+            int cont = 0;
             while(datos != null && !validar){
-                StringTokenizer tokenizer = new StringTokenizer(datos,",");
-                for(int i = 0; i < 2; i++){
-                    if(i == 0){
-                        this.usuario = tokenizer.nextToken();
-                    }else{
-                        this.contrasena = tokenizer.nextToken();
+                if(cont == 0 || cont == 1){
+                    datos = br.readLine();
+                    cont++;
+                }else{
+                    System.out.println(datos);
+                    StringTokenizer tokenizer = new StringTokenizer(datos,",");
+                    for(int i = 0; i < 2; i++){
+                        if(i == 0){
+                            this.usuario = tokenizer.nextToken();
+                        }else{
+                            this.contrasena = tokenizer.nextToken();
+                        }
                     }
+                    validar = usuario.equals(this.usuario) && contrasena.equals(this.contrasena);
+                    datos = br.readLine();
+                    cont++;
                 }
-                validar = usuario.equals(this.usuario) && contrasena.equals(this.contrasena);
-                datos = br.readLine();
+                
             }
         } catch (FileNotFoundException ex) {
             System.out.println("OCURRIO UN ERROR: " + ex.getMessage());
@@ -53,17 +62,24 @@ public class Login {
             FileReader fr = new FileReader("RegistrosAlumnos.csv");
             br = new BufferedReader(fr);
             String datos = br.readLine();
+            int cont = 0;
             while(datos != null && !validar){
-                StringTokenizer tokenizer = new StringTokenizer(datos,",");
-                for(int i = 0; i < 2; i++){
-                    if(i == 0){
-                        this.usuario = tokenizer.nextToken();
-                    }else{
-                        this.contrasena = tokenizer.nextToken();
+                if(cont == 0 || cont == 1){
+                    datos = br.readLine();
+                    cont++;
+                }else{
+                    StringTokenizer tokenizer = new StringTokenizer(datos,",");
+                    for(int i = 0; i < 2; i++){
+                        if(i == 0){
+                            this.usuario = tokenizer.nextToken();
+                        }else{
+                            this.contrasena = tokenizer.nextToken();
+                        }
                     }
-                }
-                validar = usuario.equals(this.usuario) && contrasena.equals(this.contrasena);
-                datos = br.readLine();
+                    validar = usuario.equals(this.usuario) && contrasena.equals(this.contrasena);
+                    datos = br.readLine();
+                    cont++;
+                }   
             }
         } catch (FileNotFoundException ex) {
             System.out.println("OCURRIO UN ERROR: " + ex.getMessage());

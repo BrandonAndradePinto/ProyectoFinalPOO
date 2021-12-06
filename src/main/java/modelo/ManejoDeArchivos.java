@@ -34,13 +34,17 @@ public class ManejoDeArchivos {
                 FileWriter fw = new FileWriter(fileAlum);
                 BufferedWriter bw = new BufferedWriter(fw);
                 try (PrintWriter salida = new PrintWriter(bw)) {
-                    salida.println("\"RFC\",\"Password\",\"Primer Nombre\"," +                                      //Cambiar la salida para alumnos
-                            "\"Segundo Nombre\",\"Apellido Paterno\"," +
-                            "\"Apellido Materno\",\"Fecha de Nacimiento\"," +
-                            "\"Edad\",\"Fecha del Registro\",\"Pais\",\"Estado\"," +
-                            "\"Municipio\",\"Ciudad\",\"Calle\",\"Colonia\"," +
-                            "\"Numero Ext.\",\"Numero Int.\",\"Codigo Postal\"");
-                    salida.println("123456789,123456789,,,,,,,,,,,,,,,,09745");
+                    salida.println("\"Numero de Cuenta\",\"Password\",\"Primer Nombre\","
+                            + "\"Segundo Nombre\",\"Apellido Paterno\",Apellido Materno\","
+                            + "\"Sexo\",\"Fecha de Nacimiento\",\"Edad,Fecha del Registro\","
+                            + "\"Pais,Estado\",\"Municipio\",\"Ciudad\",\"Calle\",\"Colonia\","
+                            + "\"Numero Ext.\",\"Numero Int.\",\"Codigo Postal\","
+                            + "\"Numero de Inscripcion\",\"Promedio\",\"Indicador Escolar\","
+                            + "\"Creditos del Alumno\",\"Creditos desde el Ingreso\","
+                            + "\"Ciclo escolar (Año)\",\"Ciclo escolar (Semestre)\","
+                            + "\"Asignaturas inscritas en Ordinario\","
+                            + "\"Asignaturas aprobadas en Ordinario\",\"Regular\"");
+                    salida.println("0,0,0");
                     salida.close();
                 }
             } catch (IOException ex) {
@@ -61,10 +65,11 @@ public class ManejoDeArchivos {
                 try (PrintWriter salida = new PrintWriter(bw)) {
                     salida.println("\"RFC\",\"Password\",\"Primer Nombre\"," +
                             "\"Segundo Nombre\",\"Apellido Paterno\"," +
-                            "\"Apellido Materno\",\"Fecha de Nacimiento\"," +
+                            "\"Apellido Materno\",\"Sexo\",\"Fecha de Nacimiento\"," +
                             "\"Edad\",\"Fecha del Registro\",\"Pais\",\"Estado\"," +
                             "\"Municipio\",\"Ciudad\",\"Calle\",\"Colonia\"," +
                             "\"Numero Ext.\",\"Numero Int.\",\"Codigo Postal\"");
+                    salida.println("0,0,0");
                     salida.println("123456789,123456789,,,,,,,,,,,,,,,,09745");
                     salida.close();
                 }

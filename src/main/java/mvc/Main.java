@@ -121,10 +121,14 @@ public class Main {
                                 }
                                 switch (op){
                                     case 1:
+                                        vista.limpiarPantalla();
+                                        System.out.println(vista.title("Registrar Alumno"));
                                         controlador.registrarAlumno();
                                         break;
                                         
                                     case 2:
+                                        vista.limpiarPantalla();
+                                        System.out.println(vista.title("Registrar Administrador"));
                                         controlador.registrarAdmin();
                                         break;
                                         

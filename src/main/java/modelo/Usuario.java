@@ -1,4 +1,9 @@
 package modelo;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author brandon
@@ -9,12 +14,27 @@ public class Usuario {
    private String apellidoPaterno;
    private String apellidoMaterno;
    private String fechaNac;
-   private String edad;
+   private int edad;
    private String fechaDeRegistro;                                              //Dia en que se registro este usuario en el sistema
    private Direccion direccion;
+   private String sexo;                                                        //SEXO: true para Femenino false para masculino
 
-    public Usuario() {
-        direccion = new Direccion();
+   public Usuario() {
+    }
+   
+   public void calcularEdad(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate fechaNacimiento = LocalDate.parse(fechaNac, formatter);
+        Period age = Period.between(fechaNacimiento, LocalDate.now());
+        edad = age.getYears();
+   }
+   
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getPrimerNombre() {
@@ -57,11 +77,11 @@ public class Usuario {
         this.fechaNac = fechaNac;
     }
 
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
@@ -79,6 +99,11 @@ public class Usuario {
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "primerNombre=" + primerNombre + ", segundoNombre=" + segundoNombre + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", fechaNac=" + fechaNac + ", edad=" + edad + ", fechaDeRegistro=" + fechaDeRegistro + ", direccion=" + direccion + ", sexo=" + sexo + '}';
     }
    
 }

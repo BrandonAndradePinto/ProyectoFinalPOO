@@ -17,6 +17,14 @@ public class Direccion {
     public Direccion() {
     }
 
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -80,7 +88,9 @@ public class Direccion {
     public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Direccion{" + "pais=" + pais + ", estado=" + estado + ", municipio=" + municipio + ", ciudad=" + ciudad + ", calle=" + calle + ", colonia=" + colonia + ", numeroExt=" + numeroExt + ", numeroInt=" + numeroInt + ", codigoPostal=" + codigoPostal + '}';
+    }    
 }
