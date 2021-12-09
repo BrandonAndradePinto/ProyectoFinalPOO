@@ -13,6 +13,8 @@ public class Main {
         KeyboardInput input = new KeyboardInput();
         vista.limpiarPantalla();
         int op = 0;
+        String Key = "";
+        boolean aux = false;
         do{
             op = controlador.validarFileInicioDePrograma();
             vista.mensajeDeInicio(op);
@@ -116,6 +118,7 @@ public class Main {
                             do{
                                 vista.menuOperacionesAdmin();
                                 op = input.readInteger();
+                                vista.limpiarPantalla();
                                 if(op > 10 || op < 1){
                                     op = 0;
                                 }
@@ -133,7 +136,12 @@ public class Main {
                                         break;
                                         
                                     case 3:
-                                        controlador.actualizarDatosAlumno();
+                                            System.out.println(vista.title("Actualizar datos de un alumno"));
+                                            System.out.print("Por favor, ingrese el numero de cuenta del alumno: ");
+                                            Key = input.readString();
+                                            
+                                        
+                                        //controlador.actualizarDatosAlumno();
                                         break;
                                     
                                     case 4:

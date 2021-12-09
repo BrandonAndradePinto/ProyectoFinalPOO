@@ -30,7 +30,6 @@ public class Login {
                     datos = br.readLine();
                     cont++;
                 }else{
-                    System.out.println(datos);
                     StringTokenizer tokenizer = new StringTokenizer(datos,",");
                     for(int i = 0; i < 2; i++){
                         if(i == 0){
@@ -43,8 +42,8 @@ public class Login {
                     datos = br.readLine();
                     cont++;
                 }
-                
             }
+            br.close();
         } catch (FileNotFoundException ex) {
             System.out.println("OCURRIO UN ERROR: " + ex.getMessage());
             validar = false;
@@ -81,6 +80,7 @@ public class Login {
                     cont++;
                 }   
             }
+            br.close();
         } catch (FileNotFoundException ex) {
             System.out.println("OCURRIO UN ERROR: " + ex.getMessage());
             validar = false;

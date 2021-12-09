@@ -114,6 +114,35 @@ public class Vista {
         System.out.print("Por favor, ingrese la opcion deseada: ");
     }
     
+    public void menuActualizarDatos(boolean usuario){                                         //usuario -> true para Admin a alum usuario -> false para admin a admin
+        if(usuario){
+            System.out.println("Que datos desea actualizar/modificar\n");
+            System.out.println("\t1) Nombre");
+            System.out.println("\t2) Fecha de Nacimiento");
+            System.out.println("\t3) Sexo");
+            System.out.println("\t4) Direccion");
+            System.out.println("\t5) Contraseña");
+            System.out.println("\t6) Semestres de Ingreso");
+            System.out.println("\t7) Semestre de Ingreso");
+            System.out.println("\t8) Promedio");
+            System.out.println("\t9) Creditos del Alumno");
+            System.out.println("\t10) Asignaturas Inscritas en ordinario");
+            System.out.println("\t11) Asignaturas Aprobadas en Ordinario");
+            System.out.println("\t12) Salir\n");
+            System.out.print("Por favor, ingrese la opcion deseada: ");
+        }else{
+            System.out.println("Que datos desea actualizar/modificar\n");
+            System.out.println("\t1) Nombre");
+            System.out.println("\t2) Fecha de Nacimiento");
+            System.out.println("\t3) Sexo");
+            System.out.println("\t4) Direccion");
+            System.out.println("\t5) Contraseña");
+            System.out.println("\t6) RFC");
+            System.out.println("\t7) Salir");
+            System.out.print("Por favor, ingrese la opcion deseada: ");
+        }
+    }
+    
     public void despedida(){
         System.out.println(title("ADIOS, VUELVE PRONTO :3"));
     }

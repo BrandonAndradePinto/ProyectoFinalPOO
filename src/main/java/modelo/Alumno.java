@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 public class Alumno extends Usuario{
     private static final Carrera carrera = new Carrera();
     private String numeroDeCuenta;
+    private String password;
     private int numeroDeInscripcion;
     private String semestreDeIngreso;
     private int semestresActivo;
@@ -21,7 +22,6 @@ public class Alumno extends Usuario{
     private int creditosDelAlumno;                                              //Creditos que el alumno posee
     private int asignaturasInscritasEnOrdinario;
     private int asignaturasAprovadasEnOrdinario;
-    
     private boolean regular;
     
     
@@ -39,13 +39,12 @@ public class Alumno extends Usuario{
             FileReader fr = new FileReader("RegistrosAlumnos.csv");
             br = new BufferedReader(fr);
             String datos = br.readLine();
-            int cont = 0;
-            while(cont < 2){
+            for(int cont = 0; cont < 2; cont++){
                 StringTokenizer tokenizer = new StringTokenizer(datos,",");
                 if(cont == 1){
                     numeroDeRegistros = Integer.parseInt(tokenizer.nextToken());
                 }
-                
+                datos = br.readLine();
             }
         } catch (FileNotFoundException ex) {
             System.out.println("OCURRIO UN ERROR: " + ex.getMessage());
@@ -57,7 +56,7 @@ public class Alumno extends Usuario{
         for(int i = 0; i < 2; i++){
             str = str + (int)(Math.random()*10);
         }
-        numeroDeRegistros++;
+        numeroDeRegistros = numeroDeRegistros + 1;
         if(numeroDeRegistros < 10){
             str = str + "000" + numeroDeRegistros;
         }else if(numeroDeRegistros < 100){
@@ -68,23 +67,59 @@ public class Alumno extends Usuario{
             str = str + numeroDeRegistros;
         }
         numeroDeCuenta = str;
+        ManejoDeArchivos file = new ManejoDeArchivos();
+        file.modificarArchivoNumReg(1, numeroDeRegistros, true);
     }
     
     public void generarNumInscripcion(){
         
     }
     
-    /*public void generarIndicadorEscolar(){
-        if(creditosDesdeElIngreso == 0){                                                            //Indica que el alumno es de primer ingreso y que por lo tanto no cuenta todavia con los datos necesarios para obtener el numero de inscripcion
+    public void generarIndicadorEscolar(){
+        int creditosDesdeElIngreso = 0;
+        if(semestresActivo == 0){                                                            //Indica que el alumno es de primer ingreso y que por lo tanto no cuenta todavia con los datos necesarios para obtener el numero de inscripcion
             indicadorEscolar = 0;
             regular = true;
             return;
+        }else{
+            if(semestresActivo >= 10){
+                creditosDesdeElIngreso = carrera.numDeCreditosTotales;
+            }else{
+                for(int i = 0; i < semestresActivo; i++){
+                    for(int cont = 0; cont < 6; cont++){
+                        creditosDesdeElIngreso = creditosDesdeElIngreso + carrera.creditosPorSemestre[i][cont];
+                    }
+                }
+            }
         }
-        int velocidad = (creditosDelAlumno/creditosDesdeElIngreso)*100;
-        int escolaridad = (asignaturasAprovadasEnOrdinario/asignaturasInscritasEnOrdinario)*100;
+        if(creditosDelAlumno < creditosDesdeElIngreso){
+            regular = false;
+        }else{
+            regular = true;
+        }
+        System.out.println("CreditosTotalesDesdeElIngreso: " + creditosDesdeElIngreso);
+        double velocidad = ((double)creditosDelAlumno/(double)creditosDesdeElIngreso)*100;
+        System.out.println("Velocidad = " + velocidad + "  creditosDelAlumno = " + creditosDelAlumno);
+        double escolaridad = ((double)asignaturasAprovadasEnOrdinario/(double)asignaturasInscritasEnOrdinario)*100;
+        System.out.println("escolaridad = " + escolaridad + "asignaturasAprovadasEnOrdinario = " + asignaturasAprovadasEnOrdinario + "  asignaturasInscritasEnOrdinario= " +asignaturasInscritasEnOrdinario);
         indicadorEscolar = promedio * velocidad * escolaridad;
-    }*/
+    }
 
+    public String generarLineaCSV(){
+        Direccion dir = super.getDireccion();
+        return numeroDeCuenta+","+password+","+super.getPrimerNombre()+","+
+                super.getSegundoNombre()+","+super.getApellidoPaterno()+","+
+                super.getApellidoMaterno()+","+super.getSexo()+","+
+                super.getFechaNac()+","+super.getEdad()+","+super.getFechaDeRegistro()+","+
+                dir.getPais()+","+dir.getEstado()+","+dir.getMunicipio()+","+
+                dir.getCiudad()+","+dir.getCalle()+","+dir.getColonia()+","+
+                dir.getNumeroExt()+","+dir.getNumeroInt()+","+dir.getCodigoPostal()+","+
+                numeroDeInscripcion+","+promedio+","+indicadorEscolar+","+
+                creditosDelAlumno+","+semestreDeIngreso+","+semestresActivo+","+
+                asignaturasInscritasEnOrdinario+","+asignaturasAprovadasEnOrdinario+","+
+                regular;
+    }
+    
     public boolean isRegular() {
         return regular;
     }
@@ -163,6 +198,14 @@ public class Alumno extends Usuario{
 
     public void setNumeroDeCuenta(String numeroDeCuenta) {
         this.numeroDeCuenta = numeroDeCuenta;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

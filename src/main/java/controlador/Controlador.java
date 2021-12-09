@@ -1,14 +1,18 @@
 package controlador;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Admin;
 import modelo.Alumno;
 import modelo.Direccion;
 import modelo.Login;
 import modelo.ManejoDeArchivos;
+import vista.Vista;
 
 /**
  *
@@ -215,7 +219,6 @@ public class Controlador {
             }
         }while(datosInt > 2 || datosInt < 1);
         alu.setSemestreDeIngreso(datosStr);
-        System.out.println(datosStr);
         
         do{
             System.out.println("\n\tNOTA: 0 para los de primer ingreso");
@@ -287,7 +290,15 @@ public class Controlador {
             alu.setPromedio(prom);
         }
         
-        alu.generarNumDeCuenta();        
+        alu.generarNumDeCuenta();
+        alu.generarIndicadorEscolar();
+        alu.setPassword(alu.getNumeroDeCuenta());
+        ManejoDeArchivos file = new ManejoDeArchivos();
+        try {
+            file.añadirReg(alu.generarLineaCSV(), true);
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void registrarAdmin(){
@@ -439,10 +450,80 @@ public class Controlador {
         dir.setCodigoPostal(input.readString());
         
         alu.setDireccion(dir);
+        alu.setPassword(alu.getRfc());
+        ManejoDeArchivos file = new ManejoDeArchivos();
+        try {
+            file.añadirReg(alu.generarLineaCSV(), false);
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public void actualizarDatosAlumno(){
-        System.out.println("Metodo para Actualizar Datos del Alumno");
+    public boolean actualizarDatosAlumno(String Key){
+        ManejoDeArchivos file = new ManejoDeArchivos();
+        String datos = file.buscarRegistro(Key, true);
+        if(datos.equals("")){
+            System.out.println("\n*ALUMNO NO ENCONTRADO");
+            return false;
+        }else{
+            int op = 0;
+            KeyboardInput input = new KeyboardInput();
+            do{
+                Vista vista = new Vista();
+                vista.menuActualizarDatos(true);
+                op = input.readInteger();
+                switch (op){
+                    case 1:
+                        
+                        break;
+                        
+                    case 2:
+                        break;
+                        
+                    case 3:
+                        break;
+                        
+                    case 4:
+                        break;
+                    
+                            
+                    case 5:
+                        break;
+                        
+                        
+                    case 6:
+                        break;
+                        
+                        
+                    case 7:
+                        break;
+                        
+                        
+                    case 8:
+                        break;
+                        
+                        
+                    case 9:
+                        break;
+                    
+                        
+                    case 10:
+                        break;
+                        
+                        
+                    case 11:
+                        break;
+                        
+                        
+                    case 12:
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }while(op != 12);
+        }
+        return true;
     }
     
     public void actualizarMisDatosAdmin(){

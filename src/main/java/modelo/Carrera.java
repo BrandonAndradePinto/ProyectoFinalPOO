@@ -8,7 +8,7 @@ public class Carrera {
     public final int clvDeCarrera = 110;
     public final int numDeCreditosTotales = 438;
     public final int SemestresDuracion = 10;
-    public static final int[][] CreditosPorSemestre ={
+    public static final int[][] creditosPorSemestre ={
             { 8,12,10, 6,10, 0},
             { 8, 8,12, 6,10, 0},
             { 8, 8, 8, 2,10,10},

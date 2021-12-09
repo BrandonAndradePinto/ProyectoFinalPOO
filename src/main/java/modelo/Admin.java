@@ -23,4 +23,14 @@ public class Admin extends Usuario{
         this.password = password;
     }
     
+    public String generarLineaCSV(){
+        Direccion dir = super.getDireccion();
+        return rfc+","+password+","+super.getPrimerNombre()+","+
+                super.getSegundoNombre()+","+super.getApellidoPaterno()+","+
+                super.getApellidoMaterno()+","+super.getSexo()+","+
+                super.getFechaNac()+","+super.getEdad()+","+super.getFechaDeRegistro()+","+
+                dir.getPais()+","+dir.getEstado()+","+dir.getMunicipio()+","+
+                dir.getCiudad()+","+dir.getCalle()+","+dir.getColonia()+","+
+                dir.getNumeroExt()+","+dir.getNumeroInt()+","+dir.getCodigoPostal();
+    }
 }
