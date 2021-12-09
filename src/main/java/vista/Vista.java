@@ -98,7 +98,7 @@ public class Vista {
         System.out.println("\t4)Actualizar mis datos");
         System.out.println("\t5)Consultar datos de un alumno");
         System.out.println("\t6)Consultar mis datos");
-        //System.out.println("\t7)Eliminar registro de alumno");
+        System.out.println("\t7)Eliminar registro de alumno");
         System.out.println("\t8)Eliminar registro de administrador");
         System.out.println("\t9)Generar y/o Actualizar numeros de inscripcion");
         System.out.println("\t10)Cerrar Sesion\n");                                              //Si van a agregar mas opciones (o quitar) siempre dejen a Salir como la ultima opcion
@@ -123,12 +123,11 @@ public class Vista {
             System.out.println("\t4) Direccion");
             System.out.println("\t5) Contraseña");
             System.out.println("\t6) Semestres de Ingreso");
-            System.out.println("\t7) Semestre de Ingreso");
-            System.out.println("\t8) Promedio");
-            System.out.println("\t9) Creditos del Alumno");
-            System.out.println("\t10) Asignaturas Inscritas en ordinario");
-            System.out.println("\t11) Asignaturas Aprobadas en Ordinario");
-            System.out.println("\t12) Salir\n");
+            System.out.println("\t7) Promedio");
+            System.out.println("\t8) Creditos del Alumno");
+            System.out.println("\t9) Asignaturas Inscritas en ordinario");
+            System.out.println("\t10) Asignaturas Aprobadas en Ordinario");
+            System.out.println("\t11) Salir\n");
             System.out.print("Por favor, ingrese la opcion deseada: ");
         }else{
             System.out.println("Que datos desea actualizar/modificar\n");

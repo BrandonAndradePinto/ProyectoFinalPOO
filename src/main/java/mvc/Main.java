@@ -149,6 +149,10 @@ public class Main {
                                         break;
                                     
                                     case 5:
+                                        System.out.println(vista.title("Consultar datos de un alumno"));
+                                        System.out.print("Por favor, ingrese el numero de cuenta del alumno: ");
+                                        Key = input.readString();
+                                        
                                         controlador.consultarDatosAlumno();
                                         break;
                                         

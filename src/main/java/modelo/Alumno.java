@@ -30,6 +30,128 @@ public class Alumno extends Usuario{
     }
     
     public Alumno(String datos) {
+        StringTokenizer tokenizer = new StringTokenizer(datos,",");
+        Direccion dir = new Direccion();
+        int cont = 0;
+        while(tokenizer.hasMoreTokens()){
+            switch (cont){
+                case 0:
+                    numeroDeCuenta = tokenizer.nextToken();
+                    break;
+                    
+                case 1:
+                    password = tokenizer.nextToken();
+                    break;
+                    
+                case 2:
+                    super.setPrimerNombre(tokenizer.nextToken());
+                    break;
+                
+                case 3:
+                    super.setSegundoNombre(tokenizer.nextToken());
+                    break;
+                    
+                case 4:
+                    super.setApellidoPaterno(tokenizer.nextToken());
+                    break;
+                    
+                case 5:
+                    super.setApellidoMaterno(tokenizer.nextToken());
+                    break;
+                    
+                case 6:
+                    super.setSexo(tokenizer.nextToken());
+                    break;
+                
+                case 7:
+                    super.setFechaNac(tokenizer.nextToken());
+                    break;  
+                    
+                case 8:
+                    super.setEdad(Integer.parseInt(tokenizer.nextToken()));
+                    break;
+                    
+                case 9:
+                    super.setFechaDeRegistro(tokenizer.nextToken());
+                    break;
+                    
+                case 10:
+                    dir.setPais(tokenizer.nextToken());
+                    break;
+                
+                case 11:
+                    dir.setEstado(tokenizer.nextToken());
+                    break;
+                    
+                case 12:
+                    dir.setMunicipio(tokenizer.nextToken());
+                    break;
+                    
+                case 13:
+                    dir.setCiudad(tokenizer.nextToken());
+                    break;
+                    
+                case 14:
+                    dir.setCalle(tokenizer.nextToken());
+                    break;
+                
+                case 15:
+                    dir.setColonia(tokenizer.nextToken());
+                    break;  
+                    
+                case 16:
+                    dir.setNumeroExt(tokenizer.nextToken());
+                    break;
+                    
+                case 17:
+                    dir.setNumeroInt(tokenizer.nextToken());
+                    break;
+                    
+                case 18:
+                    dir.setCodigoPostal(tokenizer.nextToken());
+                    break;
+                
+                case 19:
+                    numeroDeInscripcion = Integer.parseInt(tokenizer.nextToken());
+                    break;
+                 
+                case 20:
+                    promedio = Double.parseDouble(tokenizer.nextToken());
+                    break;
+                    
+                case 21:
+                    indicadorEscolar = Double.parseDouble(tokenizer.nextToken());
+                    break;
+                    
+                case 22:
+                    creditosDelAlumno = Integer.parseInt(tokenizer.nextToken());
+                    break;
+                    
+                case 23:
+                    semestreDeIngreso = tokenizer.nextToken();
+                    break;
+                 
+                case 24:
+                    semestresActivo = Integer.parseInt(tokenizer.nextToken());
+                    break;
+                    
+                case 25:
+                    asignaturasInscritasEnOrdinario = Integer.parseInt(tokenizer.nextToken());
+                    break;
+                    
+                case 26:
+                    asignaturasAprovadasEnOrdinario = Integer.parseInt(tokenizer.nextToken());
+                    break;
+                    
+                case 27:
+                    regular = Boolean.parseBoolean(tokenizer.nextToken());
+                    break;
+                    
+                default:
+                    break;
+            }
+            cont++;
+        }
     }
     
     public void generarNumDeCuenta(){

@@ -468,60 +468,121 @@ public class Controlador {
         }else{
             int op = 0;
             KeyboardInput input = new KeyboardInput();
+            Alumno alu = new Alumno(datos);
             do{
                 Vista vista = new Vista();
                 vista.menuActualizarDatos(true);
                 op = input.readInteger();
+                String datosStr = "";
                 switch (op){
                     case 1:
+                        System.out.println(vista.title("Actualizar/Modificar Nombre"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
+                        do{
+                            System.out.print("\n\tPrimer Nombre: ");
+                            datosStr = input.readString();
+                            if(datosStr.equals("")){
+                                System.out.println("\tERROR: NO se ingreso ningun Nombre");
+                            }else{
+                                alu.setPrimerNombre(datosStr);
+                            }
+                        }while(datosStr.equals(""));
+
+                        datosStr = "";
+                        System.out.print("\n\tSegundo Nombre: ");
+                        datosStr = input.readString();
+                        alu.setSegundoNombre(datosStr);
+
+                        do{
+                            System.out.print("\n\tApellido Paterno: ");
+                            datosStr = input.readString();
+                            if(datosStr.equals("")){
+                                System.out.println("\tERROR: NO se ingreso ningun Apellido");
+                            }else{
+                                alu.setApellidoPaterno(datosStr);
+                            }
+                        }while(datosStr.equals(""));
+
+                        do{
+                            System.out.print("\n\tApellido Materno: ");
+                            datosStr = input.readString();
+                            if(datosStr.equals("")){
+                                System.out.println("\tERROR: NO se ingreso ningun Apellido");
+                            }else{
+                                alu.setApellidoMaterno(datosStr);
+                            }
+                        }while(datosStr.equals(""));
+                        
+                        try {
+                            file.añadirReg(alu.generarLineaCSV(), true);
+                        } catch (IOException ex) {
+                            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         
                         break;
                         
                     case 2:
+                        System.out.println(vista.title("Actualizar/Modificar Fecha de Nacimiento"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
+                        
                         break;
                         
                     case 3:
+                        System.out.println(vista.title("Actualizar/Modificar Sexo"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
                         break;
                         
                     case 4:
+                        System.out.println(vista.title("Actualizar/Modificar Direccion"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
                         break;
                     
                             
                     case 5:
+                        System.out.println(vista.title("Actualizar/Modificar Contraseña"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
                         break;
                         
                         
                     case 6:
+                        System.out.println(vista.title("Actualizar/Modificar Semestre de Ingreso"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
                         break;
                         
                         
                     case 7:
+                        System.out.println(vista.title("Actualizar/Modificar Promedio"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
                         break;
                         
                         
                     case 8:
+                        System.out.println(vista.title("Actualizar/Modificar Creditos del Alumno"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
                         break;
                         
                         
                     case 9:
+                        System.out.println(vista.title("Actualizar/Modificar Asignaturas Inscritas en ordinario"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
                         break;
                     
                         
                     case 10:
+                        System.out.println(vista.title("Actualizar/Modificar Asignaturas Aprobadas en ordinario"));
+                        System.out.println("Por favor, ingrese ingrese la siguiente informacion: \n");
                         break;
                         
                         
                     case 11:
                         break;
                         
-                        
-                    case 12:
-                        break;
-                        
                     default:
+                        vista.limpiarPantalla();
+                        System.out.println(vista.title("Opcion No valida"));
                         break;
                 }
-            }while(op != 12);
+            }while(op != 11);
         }
         return true;
     }
