@@ -98,7 +98,7 @@ public class Vista {
         System.out.println("\t4)Actualizar mis datos");
         System.out.println("\t5)Consultar datos de un alumno");
         System.out.println("\t6)Consultar mis datos");
-        System.out.println("\t7)Eliminar registro de alumno");
+        //System.out.println("\t7)Eliminar registro de alumno");
         System.out.println("\t8)Eliminar registro de administrador");
         System.out.println("\t9)Generar y/o Actualizar numeros de inscripcion");
         System.out.println("\t10)Cerrar Sesion\n");                                              //Si van a agregar mas opciones (o quitar) siempre dejen a Salir como la ultima opcion
@@ -185,5 +185,9 @@ public class Vista {
         }
         newTitle = newTitle + "]";
         return newTitle.toUpperCase();
+    }
+    
+    public void mostrarDatos(){
+        
     }
 }

@@ -17,7 +17,7 @@ public class Usuario {
    private int edad;
    private String fechaDeRegistro;                                              //Dia en que se registro este usuario en el sistema
    private Direccion direccion;
-   private String sexo;                                                        //SEXO: true para Femenino false para masculino
+   private String sexo;                                                         //SEXO: true para Femenino false para masculino
 
    public Usuario() {
     }

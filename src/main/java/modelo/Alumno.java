@@ -15,13 +15,13 @@ public class Alumno extends Usuario{
     private String numeroDeCuenta;
     private String password;
     private int numeroDeInscripcion;
-    private String semestreDeIngreso;
-    private int semestresActivo;
-    private double promedio;
+    private String semestreDeIngreso;                                           //2019
+    private int semestresActivo;                                                // 6
+    private double promedio;                                                    //
     private double indicadorEscolar;
     private int creditosDelAlumno;                                              //Creditos que el alumno posee
-    private int asignaturasInscritasEnOrdinario;
-    private int asignaturasAprovadasEnOrdinario;
+    private int asignaturasInscritasEnOrdinario;                                //
+    private int asignaturasAprovadasEnOrdinario;                                //
     private boolean regular;
     
     
